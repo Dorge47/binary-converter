@@ -6,22 +6,35 @@ function defineVars() {
 
 function validateNumbers() {
     if (!isDecimal(firstInput.value)) {
-        document.getElementById('firstValidator').innerText = 'Please enter a valid decimal value'
+        document.getElementById('firstValidator').innerText = 'Please enter a valid decimal value';
     }
     else {
-        document.getElementById('firstValidator').innerText = ''
+        document.getElementById('firstValidator').innerText = '';
     }
     if (!isBinary(secondInput.value)) {
-        document.getElementById('secondValidator').innerText = 'Please enter a valid binary value'
+        document.getElementById('secondValidator').innerText = 'Please enter a valid binary value';
     }
     else {
-        document.getElementById('secondValidator').innerText = ''
+        document.getElementById('secondValidator').innerText = '';
     }
+}
+
+function binToDec(binaryInput) {
+    if (typeof binaryInput != 'string') {
+        binaryInput += '';
+    }
+    let answer = 0;
+    for (let i = 0; i < binaryInput.length; i++) {
+        if (binaryInput[binaryInput.length - (i + 1)] == '1') {
+            answer += Math.pow(2,i);
+        }
+    }
+    return answer;
 }
 
 function isDecimal(number) {
     if (typeof number != 'string') {
-        number += "";
+        number += '';
     }
     if (number == '') {
         return false;
@@ -34,7 +47,7 @@ function isDecimal(number) {
 
 function isBinary(number) {
     if (typeof number != 'string') {
-        number += "";
+        number += '';
     }
     if (number == '') {
         return false;
