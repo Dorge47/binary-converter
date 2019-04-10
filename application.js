@@ -23,7 +23,7 @@ function decToBin(decimalInput) {
     decimalInput = Number(decimalInput)
     let numberRemaining = decimalInput
     let binaryOutput = ''
-    for () {//find highest value
+    for (let i = 0; Math.pow) {//find highest value
 
     }
     for (let i = 0; Math.pow(2,i) < decimalInput; i++) {
