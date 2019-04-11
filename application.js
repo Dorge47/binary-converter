@@ -1,22 +1,69 @@
+flipped = false;
+
+function doAFlip() {
+    if (flipped) {
+        flipped = false;
+        firstInput.disabled = false;
+        secondInput.value = '';
+        secondInput.disabled = true;
+    }
+    else {
+        flipped = true;
+        firstInput.value = '';
+        firstInput.disabled = true;
+        secondInput.disabled = false;
+    }
+}
+
 function defineVars() {
     form = document.getElementsByTagName('form')[0];
     firstInput = document.getElementsByName('firstInput')[0];
     secondInput = document.getElementsByName('secondInput')[0];
+    secondInput.disabled = true;
+}
+
+function convert() {
+    if (validateNumbers()) {
+        return;
+    }
+    if (flipped) {
+        firstInput.value = binToDec(secondInput.value);
+        return;
+    }
+    secondInput.value = decToBin(firstInput.value);
 }
 
 function validateNumbers() {
+    let invalid = false;
     if (!isDecimal(firstInput.value)) {
-        document.getElementById('firstValidator').innerText = 'Please enter a valid decimal value';
+        if (!flipped) {
+            document.getElementById('firstValidator').innerText = 'Please enter a valid decimal value';
+            invalid = true;
+        }
     }
     else {
         document.getElementById('firstValidator').innerText = '';
     }
     if (!isBinary(secondInput.value)) {
-        document.getElementById('secondValidator').innerText = 'Please enter a valid binary value';
+        if (flipped) {
+            document.getElementById('secondValidator').innerText = 'Please enter a valid binary value';
+            invalid = true;
+        }
     }
     else {
         document.getElementById('secondValidator').innerText = '';
     }
+    return invalid;
+}
+
+function validateFirst(toValidate) {
+    toValidate.value = toValidate.value.replace(/\D/, '');
+    toValidate.value = toValidate.value.slice(0,16);
+}
+
+function validateSecond(toValidate) {
+    toValidate.value = toValidate.value.replace(/\D|[2-9]/, '');
+    toValidate.value = toValidate.value.slice(0,16);
 }
 
 function notParseInt(input) {

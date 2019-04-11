@@ -11,21 +11,21 @@
 </head>
 
 <body onload="defineVars()">
-    <h1>Binary to Decimal Converter</h1>
+    <h1>Binary/Decimal Converter</h1>
     <br>
     <form>
     <label for="firstInput">Decimal:</label>
-        <input type="number" name="firstInput" value="0" max="9999999999999999">
+        <input type="text" name="firstInput" value="0" onkeyup="validateFirst(this)" onkeydown="validateFirst(this)" onkeypress="validateFirst(this)">
         <br>
         <p id="firstValidator"></p>
         <br>
         <label for="secondInput">Binary:</label>
-        <input type="number" name="secondInput" value="0" max="9999999999999999" disabled>
+        <input type="text" name="secondInput" value="0" onkeyup="validateSecond(this)" onkeydown="validateSecond(this)" onkeypress="validateSecond(this)" disabled>
         <br>
         <p id="secondValidator"></p>
         <br>
-        <button type="button" name="button" onclick="validateNumbers()">Convert</button>
-        <button type="button" name="button" onclick="switchSides()">Switch sides</button>
+        <button type="button" name="button" onclick="convert()">Convert</button>
+        <button type="button" name="button" onclick="doAFlip()">Switch sides</button>
     </form>
 </body>
 
