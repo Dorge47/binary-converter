@@ -5,3 +5,7 @@
 #secondValidator {
     color: red;
 }
+
+input {
+    -moz-appearance: textfield;
+}

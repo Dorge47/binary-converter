@@ -19,19 +19,72 @@ function validateNumbers() {
     }
 }
 
-function decToBin(decimalInput) {
-    decimalInput = Number(decimalInput)
-    let numberRemaining = decimalInput
-    let binaryOutput = ''
-    for (let i = 0; Math.pow) {//find highest value
-
+function notParseInt(input) {
+    let answer = 0;
+    if (typeof input != 'string') {
+        input += '';
     }
-    for (let i = 0; Math.pow(2,i) < decimalInput; i++) {
-        if (numberRemaining > Math.pow(2,i)) {
-            binaryOutput += '1'
+    for (i = 0; i < input.length; i++) {
+        switch (input[input.length - (i + 1)]) {
+            case '0':
+                break;
+            case '1':
+                answer += Math.pow(10, i);
+                break;
+            case '2':
+                answer += (2 * Math.pow(10, i));
+                break;
+            case '3':
+                answer += (3 * Math.pow(10, i));
+                break;
+            case '4':
+                answer += (4 * Math.pow(10, i));
+                break;
+            case '5':
+                answer += (5 * Math.pow(10, i));
+                break;
+            case '6':
+                answer += (6 * Math.pow(10, i));
+                break;
+            case '7':
+                answer += (7 * Math.pow(10, i));
+                break;
+            case '8':
+                answer += (8 * Math.pow(10, i));
+                break;
+            case '9':
+                answer += (9 * Math.pow(10, i));
+                break;
+            default:
+                return NaN;
         }
     }
     return answer;
+}
+
+function decToBin(decimalInput) {
+    decimalInput = Number(decimalInput);
+    if (decimalInput == 0) {
+        return '0';
+    }
+    var lowestPower;
+    var lowestIterator;
+    let numberRemaining = decimalInput;
+    let binaryOutput = '';
+    for (let i = 0; Math.pow(2,i) <= decimalInput; i++) {//find lowest power of 2 greater than decimalInput
+        secondLowestPower = Math.pow(2, (i + 1));
+        secondLowestIterator = i;
+    }
+    for (let i = 0; i <= secondLowestIterator; i++) {
+        if (Math.pow(2, (secondLowestIterator - i)) > numberRemaining) {
+            binaryOutput += 0;
+        }
+        else {
+            binaryOutput += 1;
+            numberRemaining -= Math.pow(2, (secondLowestIterator - i));
+        }
+    }
+    return binaryOutput;
 }
 
 function binToDec(binaryInput) {

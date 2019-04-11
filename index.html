@@ -15,16 +15,17 @@
     <br>
     <form>
     <label for="firstInput">Decimal:</label>
-        <input type="number" name="firstInput" value="0">
+        <input type="number" name="firstInput" value="0" max="9999999999999999">
         <br>
         <p id="firstValidator"></p>
         <br>
         <label for="secondInput">Binary:</label>
-        <input type="number" name="secondInput" value="0" disabled>
+        <input type="number" name="secondInput" value="0" max="9999999999999999" disabled>
         <br>
         <p id="secondValidator"></p>
         <br>
         <button type="button" name="button" onclick="validateNumbers()">Convert</button>
+        <button type="button" name="button" onclick="switchSides()">Switch sides</button>
     </form>
 </body>
 
